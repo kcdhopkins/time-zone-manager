@@ -9,7 +9,6 @@ function App() {
 
   useEffect(()=>{
     setInterval(()=>{
-      const currentTime = moment()
       const PSTtime = moment().tz('America/Los_Angeles').format('h:mm A')
       const ESTtime = moment().tz('America/New_York').format('h:mm A')
       const MSTtime = moment().tz('America/Denver').format('h:mm A')
