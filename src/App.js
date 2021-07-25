@@ -1,5 +1,6 @@
-import { Box, Grid, Typography } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { Box, Grid, Typography } from "@material-ui/core"
+import { useEffect, useState } from "react"
+import './index.css'
 import img from '../src/images/united-states-time-zone-map.gif'
 const moment = require('moment-timezone')
 
@@ -18,25 +19,27 @@ function App() {
   }, [])
 
   return (
-    <Grid container>
-      <Grid item xs={4}>
-        {time.map( (timeObj, index) => {
-          return (
-            <Box key = {`time-${index}`} component="div" justifyItems="center" alignItems="center" borderRadius={16} border={1} display="flex" flexDirection="column" m={2} boxShadow={3}>
-              <Typography variant="h4" style={{color:timeObj.color}}>
-                {timeObj.zone}
-              </Typography>
-              <Typography variant="h4" style={{color:timeObj.color}}>
-                {timeObj.time}
-              </Typography>
-            </Box>)
-          })
-        }
+    <div style={{widht: "100%", height:"100%"}}>
+      <Grid container justifyItems="center" alignItems="center">
+        <Grid item xs={12} md={4}>
+          {time.map( (timeObj, index) => {
+            return (
+              <Box key = {`time-${index}`} component="div" justifyItems="center" alignItems="center" borderRadius={16} border={1} display="flex" flexDirection="column" m={2} boxShadow={3}>
+                <Typography variant="h4" style={{color:timeObj.color}}>
+                  {timeObj.zone}
+                </Typography>
+                <Typography variant="h4" style={{color:timeObj.color}}>
+                  {timeObj.time}
+                </Typography>
+              </Box>)
+            })
+          }
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <img src = {img} alt="timezone_map" style={{width: "100%"}}/>
+        </Grid>
       </Grid>
-      <Grid item xs={8}>
-        <img src = {img} alt="timezone_map"/>
-      </Grid>
-    </Grid>
+    </div>
   );
 }
 
