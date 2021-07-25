@@ -27,10 +27,10 @@ function App() {
           {time.map( (timeObj, index) => {
             return (
               <Box key = {`time-${index}`} component="div" justifyItems="center" alignItems="center" borderRadius={16} border={1} display="flex" flexDirection="column" m={2} boxShadow={3}>
-                <Typography variant="h4" style={{color:timeObj.color}}>
+                <Typography variant="h4" style={{color:timeObj.color, fontFamily:"Tourney, cursive", fontWeight: "bold"}}>
                   {timeObj.zone}
                 </Typography>
-                <Typography variant="h4" style={{color:timeObj.color}}>
+                <Typography variant="h4" style={{color:timeObj.color, fontFamily:"Tourney, cursive", fontWeight: "bold"}}>
                   {timeObj.time}
                 </Typography>
               </Box>)
