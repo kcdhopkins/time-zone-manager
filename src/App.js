@@ -9,13 +9,15 @@ function App() {
   const [time, setTime] = useState([])
 
   useEffect(()=>{
-    setInterval(()=>{
+    const myTimer = setInterval(()=>{
       const PSTtime = moment().tz('America/Los_Angeles').format('h:mm A')
       const ESTtime = moment().tz('America/New_York').format('h:mm A')
       const MSTtime = moment().tz('America/Denver').format('h:mm A')
       const CSTtime = moment().tz('America/Chicago').format('h:mm A')
       setTime([{time: PSTtime, zone:"PST - Pacific", color: "blue"}, {time:ESTtime, zone: "EST - Eastern", color: "orange"}, {time:MSTtime, zone:"MST - Mountain", color: "green"}, {time:CSTtime, zone:"CST - Central", color:"black"}])
     }, 1000)
+
+    return ()=>clearInterval(myTimer)
   }, [])
 
   return (
