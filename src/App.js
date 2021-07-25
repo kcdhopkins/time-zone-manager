@@ -14,7 +14,7 @@ function App() {
       const ESTtime = moment().tz('America/New_York').format('h:mm A')
       const MSTtime = moment().tz('America/Denver').format('h:mm A')
       const CSTtime = moment().tz('America/Chicago').format('h:mm A')
-      setTime([{time: PSTtime, zone:"PST", color: "blue"}, {time:ESTtime, zone: "EST", color: "orange"}, {time:MSTtime, zone:"MST", color: "green"}, {time:CSTtime, zone:"CST", color:"black"}])
+      setTime([{time: PSTtime, zone:"PST - Pacific", color: "blue"}, {time:ESTtime, zone: "EST - Eastern", color: "orange"}, {time:MSTtime, zone:"MST - Mountain", color: "green"}, {time:CSTtime, zone:"CST - Central", color:"black"}])
     }, 1000)
   }, [])
 
