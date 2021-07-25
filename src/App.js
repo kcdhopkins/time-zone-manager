@@ -19,14 +19,14 @@ function App() {
 
   return (
     <Grid container>
-      <Grid item xs={2}>
+      <Grid item xs={4}>
         {time.map( (timeObj, index) => {
           return (
             <Box key = {`time-${index}`} component="div" justifyItems="center" alignItems="center" borderRadius={16} border={1} display="flex" flexDirection="column" m={2} boxShadow={3}>
-              <Typography variant="h3" style={{color:timeObj.color}}>
+              <Typography variant="h4" style={{color:timeObj.color}}>
                 {timeObj.zone}
               </Typography>
-              <Typography variant="h3" style={{color:timeObj.color}}>
+              <Typography variant="h4" style={{color:timeObj.color}}>
                 {timeObj.time}
               </Typography>
             </Box>)
