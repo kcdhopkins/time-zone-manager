@@ -33,6 +33,7 @@ const InputField = ({setCustomTime}) => {
 
         const currentZone = moment(dateTime).tz(TIMEZONES[fromTimeZone])
         const convertZoneTime = currentZone.clone().tz(TIMEZONES[toTimeZone]).format("h:mm A");
+        debugger
         setCustomTime(
             {
                 time: convertZoneTime, 
