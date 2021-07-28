@@ -1,28 +1,50 @@
 import { Box, Grid, Typography } from "@material-ui/core"
+import { makeStyles } from '@material-ui/core/styles'
 import { useEffect, useState } from "react"
 import './index.css'
 import img from '../src/images/united-states-time-zone-map.gif'
+import TimeZoneManager from "./components/timezone-converter/"
+import _ from "lodash"
 const moment = require('moment-timezone')
 
+const useStyles = makeStyles((theme) => ({
+  timeform: {
+    width: '40vw',
+  }
+}));
 
 function App() {
   const [time, setTime] = useState([])
-
+  const [customTime, setCustomTime] = useState({})
+  const classes = useStyles()
   useEffect(()=>{
     const myTimer = setInterval(()=>{
       const PSTtime = moment().tz('America/Los_Angeles').format('h:mm A')
       const ESTtime = moment().tz('America/New_York').format('h:mm A')
       const MSTtime = moment().tz('America/Denver').format('h:mm A')
       const CSTtime = moment().tz('America/Chicago').format('h:mm A')
-      setTime([{time: PSTtime, zone:"PST - Pacific", color: "blue"}, {time:ESTtime, zone: "EST - Eastern", color: "orange"}, {time:MSTtime, zone:"MST - Mountain", color: "green"}, {time:CSTtime, zone:"CST - Central", color:"black"}])
+      
+      if(_.isEmpty(customTime)){
+        setTime([{time: PSTtime, zone:"PST - Pacific", color: "blue"}, {time:ESTtime, zone: "EST - Eastern", color: "orange"}, {time:MSTtime, zone:"MST - Mountain", color: "green"}, {time:CSTtime, zone:"CST - Central", color:"black"}])
+      } else{
+        setTime([customTime, {time: PSTtime, zone:"PST - Pacific", color: "blue"}, {time:ESTtime, zone: "EST - Eastern", color: "orange"}, {time:MSTtime, zone:"MST - Mountain", color: "green"}, {time:CSTtime, zone:"CST - Central", color:"black"}])
+      }
     }, 1000)
-
     return ()=>clearInterval(myTimer)
-  }, [])
+  })
 
   return (
     <div style={{widht: "100%", height:"100%"}}>
       <Grid container justifyItems="center" alignItems="center">
+        <Grid container xs = {12}>
+        <Grid item xs={12} md={6}>
+          <TimeZoneManager 
+            classes={classes}
+            customTime={customTime}
+            setCustomTime={setCustomTime}
+          />
+        </Grid>
+        </Grid>
         <Grid item xs={12} md={4}>
           {time.map( (timeObj, index) => {
             return (
