@@ -3,6 +3,7 @@ import { Box, Grid, Button } from "@material-ui/core"
 import TimezoneFieldInput from './TimezoneFieldInput'
 import TimezoneSelections from './TimezoneSelections'
 import { Formik } from 'formik'
+import spacetime from 'spacetime'
 const moment = require('moment-timezone')
 
 const TIMEZONES = {
@@ -13,10 +14,10 @@ const TIMEZONES = {
 }
 
 const ABBR = {
-    "PST":'Pacific',
-    "EST":'Eastern',
-    "MST":'Mountain',
-    "CST":'Central'
+    "America/Los_Angeles":'Pacific',
+    "America/New_York":'Eastern',
+    "America/Denver":'Mountain',
+    "America/Chicago":'Central'
 }
 
 const InputField = ({setCustomTime}) => {
@@ -27,16 +28,25 @@ const InputField = ({setCustomTime}) => {
         const dateTime = `${date} ${time}`
         const fromZone = timezonefrom.split(space)?.[0]
         const toZone = timezoneto.split(space)?.[0]
-        const timeZoneKeys = Object.keys(TIMEZONES)
-        const fromTimeZone = timeZoneKeys.filter( zone => fromZone === zone )?.[0]
-        const toTimeZone = timeZoneKeys.filter( zone => toZone === zone )?.[0]
-
-        const currentZone = moment(dateTime).tz(TIMEZONES[fromTimeZone])
-        const convertZoneTime = currentZone.clone().tz(TIMEZONES[toTimeZone]).format("h:mm A");
-        debugger
+        let fromTimeZone
+        let toTimeZone
+        
+        const currentInputZoneDate = spacetime(date, fromZone)
+        const currentInputZoneDateTime = currentInputZoneDate.time(time)
+        const convertedTime = currentInputZoneDateTime.goto(toZone).time()
+    
+        for(const key in TIMEZONES){
+            if(TIMEZONES[key] === fromZone){
+                fromTimeZone = TIMEZONES[key]
+            }
+            if(TIMEZONES[key] === toZone){
+                toTimeZone = TIMEZONES[key]
+            }
+        }
+        
         setCustomTime(
             {
-                time: convertZoneTime, 
+                time: convertedTime, 
                 zone:`${ABBR[fromTimeZone]} to ${ABBR[toTimeZone]}`, 
                 color: "purple"
             }

@@ -1,6 +1,12 @@
 import React from 'react'
 import { Box, FormControl, Grid, InputLabel, Select } from "@material-ui/core"
-import { TIMEZONES } from '../../constants.js/timezones'
+
+const TIMEZONES = {
+    "PST":'America/Los_Angeles',
+    "EST":'America/New_York',
+    "MST":'America/Denver',
+    "CST":'America/Chicago'
+}
 
 const TimezoneSelections = ({values, onChange}) => {
     return (
