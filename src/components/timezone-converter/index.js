@@ -25,7 +25,6 @@ const InputField = ({setCustomTime}) => {
         const { timezonefrom, timezoneto, time} = values
         const space = " "
         const date = moment().format("MM/DD/YYYY")
-        const dateTime = `${date} ${time}`
         const fromZone = timezonefrom.split(space)?.[0]
         const toZone = timezoneto.split(space)?.[0]
         let fromTimeZone
