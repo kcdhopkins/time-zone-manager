@@ -10,14 +10,16 @@ const TIMEZONES = {
     "PST":'America/Los_Angeles',
     "EST":'America/New_York',
     "MST":'America/Denver',
-    "CST":'America/Chicago'
+    "CST":'America/Chicago',
+    "UTC": "UTC"
 }
 
 const ABBR = {
     "America/Los_Angeles":'Pacific',
     "America/New_York":'Eastern',
     "America/Denver":'Mountain',
-    "America/Chicago":'Central'
+    "America/Chicago":'Central',
+    "UTC": "Universal"
 }
 
 const InputField = ({setCustomTime}) => {

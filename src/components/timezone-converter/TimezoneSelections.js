@@ -5,7 +5,8 @@ const TIMEZONES = {
     "PST":'America/Los_Angeles',
     "EST":'America/New_York',
     "MST":'America/Denver',
-    "CST":'America/Chicago'
+    "CST":'America/Chicago',
+    "UTC": "UTC"
 }
 
 const TimezoneSelections = ({values, onChange}) => {
@@ -30,6 +31,7 @@ const TimezoneSelections = ({values, onChange}) => {
                             <option value={TIMEZONES.EST}>EST - Eastern</option>
                             <option value={TIMEZONES.MST}>MST - Mountain</option>
                             <option value={TIMEZONES.CST}>CST - Central</option>
+                            <option value={TIMEZONES.UTC}>UTC - Universal</option>
                         </Select>
                     </FormControl>
                 </Box>
@@ -53,6 +55,7 @@ const TimezoneSelections = ({values, onChange}) => {
                             <option value={TIMEZONES.EST}>EST - Eastern</option>
                             <option value={TIMEZONES.MST}>MST - Mountain</option>
                             <option value={TIMEZONES.CST}>CST - Central</option>
+                            <option value={TIMEZONES.UTC}>UTC - Universal</option>
                         </Select>
                     </FormControl>
                 </Box>
