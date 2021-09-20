@@ -3,7 +3,7 @@ import { Box, TextField, Grid } from "@material-ui/core"
 
 const TimezoneFieldInput = ({values, onChange}) => {
     return (
-        <Grid container xs={12}>
+        <Grid>
             <Grid item xs ={12}>
                 <Box ml={2} mt={3} mr={1}>
                     <TextField

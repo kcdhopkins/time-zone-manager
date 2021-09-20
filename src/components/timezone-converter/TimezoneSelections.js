@@ -1,15 +1,9 @@
 import React from 'react'
 import { Box, FormControl, Grid, InputLabel, Select } from "@material-ui/core"
+import { TIMEZONES, ZONETITLES } from './enums/timezones'
 
-const TIMEZONES = {
-    "PST":'America/Los_Angeles',
-    "EST":'America/New_York',
-    "MST":'America/Denver',
-    "CST":'America/Chicago',
-    "UTC": "UTC"
-}
-
-const TimezoneSelections = ({values, onChange}) => {
+const TimezoneSelections = ({values, onChange, validators}) => {
+    //const {errors, touched} = validators
     return (
         <Grid container>
             <Grid item xs={6}>
@@ -18,8 +12,8 @@ const TimezoneSelections = ({values, onChange}) => {
                         <InputLabel htmlFor="outlined-age-native-simple">Time Zone From</InputLabel>
                         <Select
                             native
-                            value={values.timezone}
-                            onChange={(e)=>onChange(e)}
+                            name="timezonefrom"
+                            onChange={(e)=> {console.log(e); onChange(e)}}
                             label="timezonefrom"
                             inputProps={{
                                 name: 'timezonefrom',
@@ -27,11 +21,11 @@ const TimezoneSelections = ({values, onChange}) => {
                             }}
                             >
                             <option aria-label="None" value="" />
-                            <option value={TIMEZONES.PST}>PST - Pacific</option>
-                            <option value={TIMEZONES.EST}>EST - Eastern</option>
-                            <option value={TIMEZONES.MST}>MST - Mountain</option>
-                            <option value={TIMEZONES.CST}>CST - Central</option>
-                            <option value={TIMEZONES.UTC}>UTC - Universal</option>
+                            <option value={TIMEZONES.PST}>{ZONETITLES.PST}</option>
+                            <option value={TIMEZONES.EST}>{ZONETITLES.EST}</option>
+                            <option value={TIMEZONES.MST}>{ZONETITLES.MST}</option>
+                            <option value={TIMEZONES.CST}>{ZONETITLES.CST}</option>
+                            <option value={TIMEZONES.UTC}>{ZONETITLES.UTC}</option>
                         </Select>
                     </FormControl>
                 </Box>
@@ -51,11 +45,11 @@ const TimezoneSelections = ({values, onChange}) => {
                             }}
                             >
                             <option aria-label="None" value="" />
-                            <option value={TIMEZONES.PST}>PST - Pacific</option>
-                            <option value={TIMEZONES.EST}>EST - Eastern</option>
-                            <option value={TIMEZONES.MST}>MST - Mountain</option>
-                            <option value={TIMEZONES.CST}>CST - Central</option>
-                            <option value={TIMEZONES.UTC}>UTC - Universal</option>
+                            <option value={TIMEZONES.PST}>{ZONETITLES.PST}</option>
+                            <option value={TIMEZONES.EST}>{ZONETITLES.EST}</option>
+                            <option value={TIMEZONES.MST}>{ZONETITLES.MST}</option>
+                            <option value={TIMEZONES.CST}>{ZONETITLES.CST}</option>
+                            <option value={TIMEZONES.UTC}>{ZONETITLES.UTC}</option>
                         </Select>
                     </FormControl>
                 </Box>

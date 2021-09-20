@@ -4,43 +4,27 @@ import TimezoneFieldInput from './TimezoneFieldInput'
 import TimezoneSelections from './TimezoneSelections'
 import { Formik } from 'formik'
 import spacetime from 'spacetime'
+import { TIMEZONES, ABBR } from './enums/timezones'
+import TimezoneSchema from './validationsSchema/timezoneSchema'
+
 const moment = require('moment-timezone')
-
-const TIMEZONES = {
-    "PST":'America/Los_Angeles',
-    "EST":'America/New_York',
-    "MST":'America/Denver',
-    "CST":'America/Chicago',
-    "UTC": "UTC"
-}
-
-const ABBR = {
-    "America/Los_Angeles":'Pacific',
-    "America/New_York":'Eastern',
-    "America/Denver":'Mountain',
-    "America/Chicago":'Central',
-    "UTC": "Universal"
-}
 
 const InputField = ({setCustomTime}) => {
     const handleSubmit = (values, actions) => {
         const { timezonefrom, timezoneto, time} = values
-        const space = " "
         const date = moment().format("MM/DD/YYYY")
-        const fromZone = timezonefrom.split(space)?.[0]
-        const toZone = timezoneto.split(space)?.[0]
         let fromTimeZone
         let toTimeZone
         
-        const currentInputZoneDate = spacetime(date, fromZone)
+        const currentInputZoneDate = spacetime(date, TIMEZONES[timezonefrom])
         const currentInputZoneDateTime = currentInputZoneDate.time(time)
-        const convertedTime = currentInputZoneDateTime.goto(toZone).time()
+        const convertedTime = currentInputZoneDateTime.goto(TIMEZONES[timezoneto]).time()
     
         for(const key in TIMEZONES){
-            if(TIMEZONES[key] === fromZone){
+            if(TIMEZONES[key] === timezonefrom){
                 fromTimeZone = TIMEZONES[key]
             }
-            if(TIMEZONES[key] === toZone){
+            if(TIMEZONES[key] === timezoneto){
                 toTimeZone = TIMEZONES[key]
             }
         }
@@ -54,6 +38,7 @@ const InputField = ({setCustomTime}) => {
         )
     }
     return (
+        //@TODO valildators aren't working as expected
         <Formik
             initialValues={
                 { 
@@ -62,10 +47,11 @@ const InputField = ({setCustomTime}) => {
                     timezoneto:''
                 }
             }
+            validationSchema={TimezoneSchema}
             onSubmit={(values, actions)=>handleSubmit(values, actions)}
         >
             {
-                (props)=>{
+                (props, errors, touched) =>{
                   
                     return (<form onSubmit={props.handleSubmit}>
                         <Grid container>
@@ -73,7 +59,7 @@ const InputField = ({setCustomTime}) => {
                                 <TimezoneFieldInput values={props.values} onChange={props.handleChange}/>
                             </Grid>
                             <Grid item xs ={8} md={6}>
-                                <TimezoneSelections values={props.values} onChange={props.handleChange}/>
+                                <TimezoneSelections values={props.values} onChange={props.handleChange} validators={{errors, touched}}/>
                             </Grid>
                             <Grid item xs = {4} md={2}>
                                 <Box mt={2}>
