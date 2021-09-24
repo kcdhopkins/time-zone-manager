@@ -16,14 +16,15 @@ const InputField = ({setCustomTime}) => {
         let fromTimeZone
         let toTimeZone
         
-        const currentInputZoneDate = spacetime(date, TIMEZONES[timezonefrom])
+        const currentInputZoneDate = spacetime(date, timezonefrom)
         const currentInputZoneDateTime = currentInputZoneDate.time(time)
-        const convertedTime = currentInputZoneDateTime.goto(TIMEZONES[timezoneto]).time()
-    
+        const convertedTime = currentInputZoneDateTime.goto(timezoneto).time()
+
         for(const key in TIMEZONES){
             if(TIMEZONES[key] === timezonefrom){
                 fromTimeZone = TIMEZONES[key]
             }
+            
             if(TIMEZONES[key] === timezoneto){
                 toTimeZone = TIMEZONES[key]
             }
