@@ -6,6 +6,7 @@ import img from "../src/images/united-states-time-zone-map.gif";
 import TimeZoneManager from "./components/timezone-converter/";
 import { TIMEZONES, ZONETITLES } from './components/timezone-converter/enums/timezones'
 import _ from "lodash";
+import Header from "./components/header/Header";
 const moment = require("moment-timezone");
 
 const useStyles = makeStyles((theme) => ({
@@ -50,7 +51,9 @@ function App() {
   });
 
   return (
-    <div style={{ widht: "100%", height: "100%" }}>
+    <>
+      <Header />
+      <div style={{ widht: "100%", height: "100%" }}>
       <Grid container>
         <Grid container>
           <Grid item xs={12} md={6}>
@@ -86,10 +89,11 @@ function App() {
           })}
         </Grid>
         <Grid item xs={12} md={4}>
-          <img src={img} alt='timezone_map' style={{ width: "100%" }} />
+          <img src={img} alt='timezone_map' style={{ width: "100%", marginTop: "10px" }} />
         </Grid>
       </Grid>
     </div>
+    </>
   );
 }
 
