@@ -1,7 +1,9 @@
+# This site can be viewed at 
+[https://zen-torvalds-515ad2.netlify.app/](https://zen-torvalds-515ad2.netlify.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This project can be viewed at [https://zen-torvalds-515ad2.netlify.app/](https://zen-torvalds-515ad2.netlify.app/)
 ## Available Scripts
 
 In the project directory, you can run:
