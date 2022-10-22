@@ -34,7 +34,7 @@ const InputField = ({setCustomTime}) => {
             {
                 time: convertedTime, 
                 zone:`${ABBR[fromTimeZone]} to ${ABBR[toTimeZone]}`, 
-                color: "purple"
+                color: "#aaaaaa"
             }
         )
     }

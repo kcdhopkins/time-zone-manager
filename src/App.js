@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   timeform: {
     width: "40vw",
   },
+  bgBoxColor:{
+    background: "#03396c"
+  }
 }));
 
 function App() {
@@ -30,20 +33,20 @@ function App() {
 
       if (_.isEmpty(customTime)) {
         setTime([
-          { time: PSTtime, zone: ZONETITLES.PST, color: "blue" },
-          { time: ESTtime, zone: ZONETITLES.EST, color: "orange" },
-          { time: MSTtime, zone: ZONETITLES.MST, color: "green" },
-          { time: CSTtime, zone: ZONETITLES.CST, color: "black" },
-          { time: UTCtime, zone: ZONETITLES.UTC, color: "brown" },
+          { time: PSTtime, zone: ZONETITLES.PST, color: "#B2E9F7" },
+          { time: ESTtime, zone: ZONETITLES.EST, color: "#FFCC99" },
+          { time: MSTtime, zone: ZONETITLES.MST, color: "#CCFFCC" },
+          { time: CSTtime, zone: ZONETITLES.CST, color: "#FFFF99" },
+          { time: UTCtime, zone: ZONETITLES.UTC, color: "#1e1f26" },
         ]);
       } else {
         setTime([
           customTime,
-          { time: PSTtime, zone: ZONETITLES.PST, color: "blue" },
-          { time: ESTtime, zone: ZONETITLES.EST, color: "orange" },
-          { time: MSTtime, zone: ZONETITLES.MST, color: "green" },
-          { time: CSTtime, zone: ZONETITLES.CST, color: "black" },
-          { time: UTCtime, zone: ZONETITLES.UTC, color: "brown" },
+          { time: PSTtime, zone: ZONETITLES.PST, color: "#B2E9F7" },
+          { time: ESTtime, zone: ZONETITLES.EST, color: "#FFCC99" },
+          { time: MSTtime, zone: ZONETITLES.MST, color: "#CCFFCC" },
+          { time: CSTtime, zone: ZONETITLES.CST, color: "#FFFF99" },
+          { time: UTCtime, zone: ZONETITLES.UTC, color: "#1e1f26" },
         ]);
       }
     }, 1000);
@@ -77,7 +80,9 @@ function App() {
                 display='flex'
                 flexDirection='column'
                 m={2}
-                boxShadow={3}>
+                boxShadow={3}
+                className={classes.bgBoxColor}
+                >
                 <Typography variant='h4' style={{ color: timeObj.color }}>
                   {timeObj.zone}
                 </Typography>
