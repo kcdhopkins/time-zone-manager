@@ -37,7 +37,7 @@ function App() {
           { time: ESTtime, zone: ZONETITLES.EST, color: "#FFCC99" },
           { time: MSTtime, zone: ZONETITLES.MST, color: "#CCFFCC" },
           { time: CSTtime, zone: ZONETITLES.CST, color: "#FFFF99" },
-          { time: UTCtime, zone: ZONETITLES.UTC, color: "#1e1f26" },
+          { time: UTCtime, zone: ZONETITLES.UTC, color: "#f4f4f8" },
         ]);
       } else {
         setTime([
@@ -46,7 +46,7 @@ function App() {
           { time: ESTtime, zone: ZONETITLES.EST, color: "#FFCC99" },
           { time: MSTtime, zone: ZONETITLES.MST, color: "#CCFFCC" },
           { time: CSTtime, zone: ZONETITLES.CST, color: "#FFFF99" },
-          { time: UTCtime, zone: ZONETITLES.UTC, color: "#1e1f26" },
+          { time: UTCtime, zone: ZONETITLES.UTC, color: "#f4f4f8" },
         ]);
       }
     }, 1000);
