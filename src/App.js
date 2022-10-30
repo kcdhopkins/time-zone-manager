@@ -7,6 +7,7 @@ import TimeZoneManager from "./components/timezone-converter/";
 import { TIMEZONES, ZONETITLES } from './components/timezone-converter/enums/timezones'
 import _ from "lodash";
 import Header from "./components/header/Header";
+import ping from "./pingService/ping"
 const moment = require("moment-timezone");
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#03396c"
   }
 }));
-
+ping()
 function App() {
   const [time, setTime] = useState([]);
   const [customTime, setCustomTime] = useState({});
