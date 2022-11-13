@@ -73,11 +73,11 @@ const InputField = ({setCustomTime, setShowPercentCalculator}) => {
                             <Grid item xs = {12} md={3}>
                                 <Box mt={2} mx={2} display="flex" justifyContent="space-between">
                                     <ThemeProvider theme={theme}>
-                                        <Button type="submit" style ={{height: "55px", marginRight:"4px"}} variant="contained" color = "primary" size="large">
+                                        <Button type="submit" style ={{height: "55px", marginRight:"4px", fontSize: "small"}} variant="contained" color = "primary" size="large">
                                             Convert Timezone
                                         </Button>
-                                        <Button style ={{height: "55px"}} variant="contained" color="primary" size="large" onClick={()=>setShowPercentCalculator(true)}>
-                                            % calculator
+                                        <Button style ={{height: "55px", fontSize: "x-small"}} variant="contained" color="primary" size="large" onClick={()=>setShowPercentCalculator(true)}>
+                                            Open % Calculator
                                         </Button>
                                     </ThemeProvider>
                                 </Box>
