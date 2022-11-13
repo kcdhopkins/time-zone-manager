@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Grid, Button } from "@material-ui/core"
+import { Box, Grid, Button, createTheme, ThemeProvider } from "@material-ui/core"
 import TimezoneFieldInput from './TimezoneFieldInput'
 import TimezoneSelections from './TimezoneSelections'
 import { Formik } from 'formik'
@@ -9,7 +9,15 @@ import TimezoneSchema from './validationsSchema/timezoneSchema'
 
 const moment = require('moment-timezone')
 
-const InputField = ({setCustomTime}) => {
+
+const InputField = ({setCustomTime, setShowPercentCalculator}) => {
+    const theme = createTheme({
+        palette: {
+            primary: {
+               main: "#03396c" 
+            }
+        }
+    })
     const handleSubmit = (values, actions) => {
         const { timezonefrom, timezoneto, time} = values
         const date = moment().format("MM/DD/YYYY")
@@ -56,17 +64,22 @@ const InputField = ({setCustomTime}) => {
                   
                     return (<form onSubmit={props.handleSubmit}>
                         <Grid container>
-                            <Grid item xs={12} md={3}>
+                            <Grid item xs={12} md={4}>
                                 <TimezoneFieldInput values={props.values} onChange={props.handleChange}/>
                             </Grid>
-                            <Grid item xs ={8} md={6}>
+                            <Grid item xs ={12} md={5}>
                                 <TimezoneSelections values={props.values} onChange={props.handleChange} validators={{errors, touched}}/>
                             </Grid>
-                            <Grid item xs = {4} md={2}>
-                                <Box mt={2}>
-                                    <Button type="submit" style ={{height: "55px"}}variant="contained" color="primary" size="large">
-                                        Submit
-                                    </Button>
+                            <Grid item xs = {12} md={3}>
+                                <Box mt={2} mx={2} display="flex" justifyContent="space-between">
+                                    <ThemeProvider theme={theme}>
+                                        <Button type="submit" style ={{height: "55px", marginRight:"4px"}} variant="contained" color = "primary" size="large">
+                                            Submit
+                                        </Button>
+                                        <Button style ={{height: "55px"}} variant="contained" color="primary" size="large" onClick={()=>setShowPercentCalculator(true)}>
+                                            % calculator
+                                        </Button>
+                                    </ThemeProvider>
                                 </Box>
                             </Grid>
                         </Grid>

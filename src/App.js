@@ -8,6 +8,7 @@ import { TIMEZONES, ZONETITLES } from './components/timezone-converter/enums/tim
 import _ from "lodash";
 import Header from "./components/header/Header";
 import ping from "./pingService/ping"
+import PercentCalculator from "./components/percent-calculator/PercentCalculator";
 const moment = require("moment-timezone");
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +23,8 @@ ping()
 function App() {
   const [time, setTime] = useState([]);
   const [customTime, setCustomTime] = useState({});
+  const [showPercentCalculator, setShowPercentCalculator] = useState(false);
+  
   const classes = useStyles();
 
   useEffect(() => {
@@ -60,11 +63,12 @@ function App() {
       <div style={{ widht: "100%", height: "100%" }}>
       <Grid container>
         <Grid container>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8}>
             <TimeZoneManager
               classes={classes}
               customTime={customTime}
               setCustomTime={setCustomTime}
+              setShowPercentCalculator={setShowPercentCalculator}
             />
           </Grid>
         </Grid>
@@ -98,6 +102,7 @@ function App() {
           <img src={img} alt='timezone_map' style={{ width: "100%", marginTop: "10px" }} />
         </Grid>
       </Grid>
+      {showPercentCalculator && <PercentCalculator setShowPercentCalculator={setShowPercentCalculator} showPercentCalculator={showPercentCalculator}/>}
     </div>
     </>
   );

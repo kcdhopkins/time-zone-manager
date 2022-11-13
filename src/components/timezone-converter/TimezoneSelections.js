@@ -2,8 +2,7 @@ import React from 'react'
 import { Box, FormControl, Grid, InputLabel, Select } from "@material-ui/core"
 import { TIMEZONES, ZONETITLES } from './enums/timezones'
 
-const TimezoneSelections = ({values, onChange, validators}) => {
-    //const {errors, touched} = validators
+const TimezoneSelections = ({values, onChange}) => {
     return (
         <Grid container>
             <Grid item xs={6}>
@@ -13,7 +12,7 @@ const TimezoneSelections = ({values, onChange, validators}) => {
                         <Select
                             native
                             name="timezonefrom"
-                            onChange={(e)=> {console.log(e); onChange(e)}}
+                            onChange={(e)=>onChange(e)}
                             label="timezonefrom"
                             inputProps={{
                                 name: 'timezonefrom',

@@ -1,0 +1,72 @@
+
+
+body, html { 
+    overflow-x: hidden; 
+    overflow-y: auto;
+}
+
+.overlay{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: grey;
+    z-index: 1;
+    top:0;
+    opacity: 0.5;
+}
+
+.customCard{
+    position: relative;
+    background-color: white;
+    border-radius: 10px;
+    width: 50vw;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    padding: 20px;
+    overflow: auto;
+}
+
+.formStyles{
+    position: absolute;
+    top: 200px;
+    width: 100vw; 
+}
+
+label{
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 100px
+}
+
+.input-body-percent{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-fields-percent{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.inputs-labels{
+    display: flex;
+    flex-direction: column;
+}
+
+.button-percent{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.show-values{
+    background-color: rgb(177, 171, 171);
+    padding: 5px;
+}
