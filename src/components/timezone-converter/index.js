@@ -74,7 +74,7 @@ const InputField = ({setCustomTime, setShowPercentCalculator}) => {
                                 <Box mt={2} mx={2} display="flex" justifyContent="space-between">
                                     <ThemeProvider theme={theme}>
                                         <Button type="submit" style ={{height: "55px", marginRight:"4px"}} variant="contained" color = "primary" size="large">
-                                            Submit
+                                            Convert Timezone
                                         </Button>
                                         <Button style ={{height: "55px"}} variant="contained" color="primary" size="large" onClick={()=>setShowPercentCalculator(true)}>
                                             % calculator
